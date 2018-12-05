@@ -26,8 +26,6 @@ class Student extends Component {
     }
   }
 
-
-
   render() {
     return(
       <div className="student">
@@ -41,7 +39,6 @@ class Student extends Component {
             <li>Company: {this.props.company}</li>
             <li>Skill: {this.props.skill}</li>
             <li>Grade Average: {this.average(this.props.grades)}%</li>
-
           </ul>
           <div className={this.state.toggle === 'hidden' ? 'content': ''} >
             <ul>
@@ -49,6 +46,9 @@ class Student extends Component {
                 return <li key={index}>Test {index+1}: {grade}%</li>
               })}
             </ul>
+            <form onSubmit={this.props.tagUpdate}>
+              <input type="text" />
+            </form>
           </div>
         </div>
         <button className='collapsible' onClick={this.toggleCollapsible}>{this.state.toggle === 'hidden' ? '+': '-'}</button>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Student from './components/Students/student';
 import Search from './components/Search/search';
+import Tag from './components/Tags/tag';
 import './App.css';
 
 class App extends Component {
@@ -38,8 +39,8 @@ class App extends Component {
     console.log(this.state.search);
   }
 
-  showMe = () => {
-    console.log(this.state.persons);
+  addTagHandler = (tag) => {
+    console.log("okay!");
   }
 
   render() {
@@ -47,7 +48,8 @@ class App extends Component {
       <div className="student-container">
         <Search
           changed={this.searchHandler}/>
-        {this.findMatchesHandler(this.state.search, this.state.persons).map(function(person) {
+        <Tag />
+        {this.findMatchesHandler(this.state.search, this.state.persons).map((person) => {
           return <Student
             key={person.id}
             pic={person.pic}
@@ -57,6 +59,7 @@ class App extends Component {
             company={person.company}
             skill={person.skill}
             grades={person.grades}
+            tagUpdate={this.addTagHandler}
           />
         })}
       </div>

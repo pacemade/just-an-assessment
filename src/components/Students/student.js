@@ -15,7 +15,7 @@ const student = (props) => {
   return(
     <div className="student">
       <div className="student-portrait-container">
-        <img src={props.pic} alt="robot?" className="student-portrait"/>
+        <img src={props.pic} alt="robot" className="student-portrait"/>
       </div>
       <div className="stats-container">
         <h1>{props.firstName.toUpperCase()} {props.lastName.toUpperCase()}</h1>
@@ -26,6 +26,15 @@ const student = (props) => {
           <li>Grade Average: {average(props.grades)}%</li>
         </ul>
       </div>
+
+
+
+      <ul>
+        {props.grades.map((grade, index) => {
+          return <li>Test {index+1}: {grade}%</li>
+        })}
+        </ul>
+
     </div>
   )
 }

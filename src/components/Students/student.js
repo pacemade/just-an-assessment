@@ -1,14 +1,33 @@
 import React from 'react';
 
 const student = (props) => {
+
+  function average(grades) {
+    console.log(grades);
+    var sum = 0;
+    var count = grades.length;
+    for (var i = 0; i < count; i++) {
+      sum = sum + parseInt(grades[i],10);
+    }
+    return sum / count;
+  }
+
   return(
     <div>
-      <h1>{props.firstName}</h1>
+      <img src={props.pic} alt="robot?"/>
+      <h1>{props.firstName} {props.lastName}</h1>
+      <ul>
+        <li>{props.email}</li>
+        <li>{props.company}</li>
+        <li>{props.skill}</li>
+        <li>{average(props.grades)}</li>
+      </ul>
     </div>
   )
 }
 
 export default student;
+
 
 
 
@@ -19,15 +38,3 @@ export default student;
 // company: "Yadel"
 // skill: "Oracle"
 // grades: (8) ["78", "100", "92", "86", "89", "88", "91", "87"]
-
-
-// return this.props.persons.map((person, index) => {
-//   return <Person
-//     click={() => this.props.clicked(index)}
-//     name={person.name}
-//     key={person.id}
-//     forwardedRef={this.lastPersonRef}
-//     age={person.age}
-//     changed={(event) => this.props.changed(event, person.id)} />
-// })
-// }

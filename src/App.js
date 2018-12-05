@@ -33,7 +33,14 @@ class App extends Component {
       <div>
         {this.state.persons.map(function(person) {
           return <Student
-          firstName={person.firstName}
+            key={person.id}
+            pic={person.pic}
+            firstName={person.firstName}
+            lastName={person.lastName}
+            email={person.email}
+            company={person.company}
+            skill={person.skill}
+            grades={person.grades}
           />
         })}
         <button onClick={this.showMe}>Show me</button>

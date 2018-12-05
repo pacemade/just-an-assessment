@@ -4,7 +4,6 @@ import './student.css';
 const student = (props) => {
 
   function average(grades) {
-    console.log(grades);
     var sum = 0;
     var count = grades.length;
     for (var i = 0; i < count; i++) {

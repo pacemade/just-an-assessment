@@ -25,6 +25,27 @@ class App extends Component {
       })
   }
 
+  findMatchesHandler = (wordToMatch, persons) => {
+    return persons.filter(person => {
+      const regex = new RegExp(wordToMatch, 'gi');
+      return person.firstName.match(regex) || person.lastName.match(regex)
+    });
+  }
+
+  displayMatchesHandler = (e) => {
+  const matchArray = this.findMatchesHandler(e.target.value, this.state.persons)
+  console.log(matchArray);
+  // const html = matchArray.map(person => {
+  //   return`
+  //     <li>
+  //       <span>${person}</span>
+  //     </li>
+  //   `;
+  // }).join('');
+  // const suggestions = document.querySelector('.suggestions')
+  // suggestions.innerHTML = html;
+}
+
   showMe = () => {
     console.log(this.state.persons);
   }
@@ -32,7 +53,8 @@ class App extends Component {
   render() {
     return (
       <div className="student-container">
-        <Search />
+        <Search
+          changed={this.displayMatchesHandler}/>
         {this.state.persons.map(function(person) {
           return <Student
             key={person.id}

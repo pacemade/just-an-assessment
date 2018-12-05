@@ -6,6 +6,7 @@ const search = (props) => {
   return (
     <form className="search-form">
       <input
+        onChange={props.changed}
         type="text"
         className="search"
         placeholder="Search by name" />

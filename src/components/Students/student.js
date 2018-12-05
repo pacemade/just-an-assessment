@@ -3,6 +3,10 @@ import './student.css';
 
 class Student extends Component {
 
+  state = {
+    toggle: 'hidden'
+  }
+
   average = (grades) => {
     var sum = 0;
     var count = grades.length;
@@ -11,6 +15,18 @@ class Student extends Component {
     }
     return sum / count;
   }
+
+  toggleCollapsible = () => {
+    if(this.state.toggle === "hidden") {
+        console.log("its hidden")
+        this.setState({toggle: 'shown'})
+    } else {
+        console.log("its shown")
+        this.setState({toggle: 'hidden'})
+    }
+  }
+
+
 
   render() {
     return(
@@ -27,11 +43,14 @@ class Student extends Component {
             <li>Grade Average: {this.average(this.props.grades)}%</li>
 
           </ul>
-          <ul>
-            {this.props.grades.map((grade, index) => {
-              return <li>Test {index+1}: {grade}%</li>
-            })}
-          </ul>
+          <button className='collapsible' onClick={this.toggleCollapsible}>Open Collapsible</button>
+          <div className={this.state.toggle === 'hidden' ? 'content': ''} >
+            <ul>
+              {this.props.grades.map((grade, index) => {
+                return <li key={index}>Test {index+1}: {grade}%</li>
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     )

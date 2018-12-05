@@ -39,8 +39,9 @@ class App extends Component {
     console.log(this.state.search);
   }
 
-  addTagHandler = (tag) => {
-    console.log("okay!");
+  addTagHandler = (e) => {
+    e.preventDefault();
+    console.log(this);
   }
 
   render() {

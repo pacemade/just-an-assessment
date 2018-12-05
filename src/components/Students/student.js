@@ -43,7 +43,6 @@ class Student extends Component {
             <li>Grade Average: {this.average(this.props.grades)}%</li>
 
           </ul>
-          <button className='collapsible' onClick={this.toggleCollapsible}>Open Collapsible</button>
           <div className={this.state.toggle === 'hidden' ? 'content': ''} >
             <ul>
               {this.props.grades.map((grade, index) => {
@@ -52,6 +51,7 @@ class Student extends Component {
             </ul>
           </div>
         </div>
+        <button className='collapsible' onClick={this.toggleCollapsible}>{this.state.toggle === 'hidden' ? '+': '-'}</button>
       </div>
     )
   }

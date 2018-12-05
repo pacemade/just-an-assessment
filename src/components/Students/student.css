@@ -2,7 +2,7 @@
   background-color: white;
   border-bottom: 2px solid rgb(207, 207, 207);
   display: grid;
-  grid-template-columns: 28% 1fr;
+  grid-template-columns: 28% 1fr 10%;
   grid-row-gap: 100px;
   align-items: center;
 }
@@ -37,19 +37,19 @@
 /* collaspsible button */
 
 .collapsible {
-  background-color: #eee;
-  color: #444;
+  align-self: flex-start;
+  color: rgb(207, 207, 207);
   cursor: pointer;
   padding: 18px;
   width: 100%;
   border: none;
-  text-align: left;
+  text-align: center;
   outline: none;
-  font-size: 15px;
+  font-size: 2.2em;
 }
 
 .active, .collapsible:hover {
-  background-color: #ccc;
+  color: rgb(65, 65, 65);
 }
 
 .content {

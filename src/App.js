@@ -6,7 +6,8 @@ import './App.css';
 class App extends Component {
 
   state = {
-    persons: []
+    persons: [],
+    search: ''
   }
 
   componentDidMount() {
@@ -32,19 +33,16 @@ class App extends Component {
     });
   }
 
+  searchHandler = (event) => {
+    this.setState({ search: event.target.value })
+    console.log(this.state.search);
+  }
+
   displayMatchesHandler = (e) => {
-  const matchArray = this.findMatchesHandler(e.target.value, this.state.persons)
-  console.log(matchArray);
-  // const html = matchArray.map(person => {
-  //   return`
-  //     <li>
-  //       <span>${person}</span>
-  //     </li>
-  //   `;
-  // }).join('');
-  // const suggestions = document.querySelector('.suggestions')
-  // suggestions.innerHTML = html;
-}
+    const matchArray = this.findMatchesHandler(e.target.value, this.state.persons)
+    // console.log(matchArray);
+
+  }
 
   showMe = () => {
     console.log(this.state.persons);
@@ -54,8 +52,8 @@ class App extends Component {
     return (
       <div className="student-container">
         <Search
-          changed={this.displayMatchesHandler}/>
-        {this.state.persons.map(function(person) {
+          changed={this.searchHandler}/>
+        {this.findMatchesHandler(this.state.search, this.state.persons).map(function(person) {
           return <Student
             key={person.id}
             pic={person.pic}

@@ -4,21 +4,39 @@ import './App.css';
 
 class App extends Component {
 
-  callTheApi = (e) => {
+  state = {
+    persons: []
+  }
+
+  componentDidMount() {
+    this.callTheApi();
+  }
+
+  callTheApi = () => {
     fetch('https://www.hatchways.io/api/assessment/students')
       .then(function(response) {
         return response.json();
       })
       .then(data => {
-        console.log(data);
+        // console.log(data.students);
+        // this.updateStudentStateHandler(data.students);
+        this.setState({persons: data.students})
       })
+  }
+
+  showMe = () => {
+    console.log(this.state.persons);
   }
 
   render() {
     return (
-      <div className="App">
-        <button onClick={this.callTheApi}>Call the Api!</button>
-        <Student />
+      <div>
+        {this.state.persons.map(function(person) {
+          return <Student
+          firstName={person.firstName}
+          />
+        })}
+        <button onClick={this.showMe}>Show me</button>
       </div>
     );
   }

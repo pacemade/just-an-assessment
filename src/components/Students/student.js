@@ -1,4 +1,5 @@
 import React from 'react';
+import './student.css';
 
 const student = (props) => {
 
@@ -13,28 +14,21 @@ const student = (props) => {
   }
 
   return(
-    <div>
-      <img src={props.pic} alt="robot?"/>
-      <h1>{props.firstName} {props.lastName}</h1>
-      <ul>
-        <li>{props.email}</li>
-        <li>{props.company}</li>
-        <li>{props.skill}</li>
-        <li>{average(props.grades)}</li>
-      </ul>
+    <div className="student">
+      <div className="student-portrait-container">
+        <img src={props.pic} alt="robot?" className="student-portrait"/>
+      </div>
+      <div className="stats-container">
+        <h1>{props.firstName.toUpperCase()} {props.lastName.toUpperCase()}</h1>
+        <ul>
+          <li>Email: {props.email}</li>
+          <li>Company: {props.company}</li>
+          <li>Skill: {props.skill}</li>
+          <li>Grade Average: {average(props.grades)}%</li>
+        </ul>
+      </div>
     </div>
   )
 }
 
 export default student;
-
-
-
-
-// pic: "https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/voluptasdictablanditiis.jpg"
-// firstName: "Ingaberg"
-// lastName: "Orton"
-// email: "iorton0@imdb.com"
-// company: "Yadel"
-// skill: "Oracle"
-// grades: (8) ["78", "100", "92", "86", "89", "88", "91", "87"]

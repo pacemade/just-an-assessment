@@ -30,7 +30,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="student-container">
         {this.state.persons.map(function(person) {
           return <Student
             key={person.id}
@@ -43,7 +43,6 @@ class App extends Component {
             grades={person.grades}
           />
         })}
-        <button onClick={this.showMe}>Show me</button>
       </div>
     );
   }

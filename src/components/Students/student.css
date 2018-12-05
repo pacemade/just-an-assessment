@@ -1,0 +1,35 @@
+.student {
+  background-color: white;
+  border-bottom: 1px solid rgb(207, 207, 207);
+  display: grid;
+  grid-template-columns: 28% 1fr;
+  grid-row-gap: 100px;
+  align-items: center;
+}
+
+.student ul {
+  list-style: none;
+  padding: 0 0 0 10px;
+}
+
+.student-portrait-container {
+  position: relative;
+}
+
+.student-portrait {
+  display: block;
+  margin: 0px auto;
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 100px;
+  width: 55%;
+
+}
+
+.stats-container h1 {
+  color: rgb(65, 65, 65);
+  margin-bottom: 0;
+}
+
+.stats-container ul li {
+  color: grey;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Student from './components/Students/student';
+import Search from './components/Search/search';
 import './App.css';
 
 class App extends Component {
@@ -31,6 +32,7 @@ class App extends Component {
   render() {
     return (
       <div className="student-container">
+        <Search />
         {this.state.persons.map(function(person) {
           return <Student
             key={person.id}

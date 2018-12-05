@@ -39,9 +39,10 @@ class App extends Component {
     console.log(this.state.search);
   }
 
-  addTagHandler = (e) => {
+  addTagHandler = (e, tag) => {
     e.preventDefault();
-    console.log(this);
+    console.log(e.target.firstChild.value);
+    e.target.firstChild.value = '';
   }
 
   render() {

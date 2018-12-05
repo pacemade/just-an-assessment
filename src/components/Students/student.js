@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './student.css';
 
-const student = (props) => {
+class Student extends Component {
 
-  function average(grades) {
+  average = (grades) => {
     var sum = 0;
     var count = grades.length;
     for (var i = 0; i < count; i++) {
@@ -12,31 +12,30 @@ const student = (props) => {
     return sum / count;
   }
 
-  return(
-    <div className="student">
-      <div className="student-portrait-container">
-        <img src={props.pic} alt="robot" className="student-portrait"/>
+  render() {
+    return(
+      <div className="student">
+        <div className="student-portrait-container">
+          <img src={this.props.pic} alt="robot" className="student-portrait"/>
+        </div>
+        <div className="stats-container">
+          <h1>{this.props.firstName.toUpperCase()} {this.props.lastName.toUpperCase()}</h1>
+          <ul>
+            <li>Email: {this.props.email}</li>
+            <li>Company: {this.props.company}</li>
+            <li>Skill: {this.props.skill}</li>
+            <li>Grade Average: {this.average(this.props.grades)}%</li>
+
+          </ul>
+          <ul>
+            {this.props.grades.map((grade, index) => {
+              return <li>Test {index+1}: {grade}%</li>
+            })}
+          </ul>
+        </div>
       </div>
-      <div className="stats-container">
-        <h1>{props.firstName.toUpperCase()} {props.lastName.toUpperCase()}</h1>
-        <ul>
-          <li>Email: {props.email}</li>
-          <li>Company: {props.company}</li>
-          <li>Skill: {props.skill}</li>
-          <li>Grade Average: {average(props.grades)}%</li>
-        </ul>
-      </div>
-
-
-
-      <ul>
-        {props.grades.map((grade, index) => {
-          return <li>Test {index+1}: {grade}%</li>
-        })}
-        </ul>
-
-    </div>
-  )
+    )
+  }
 }
 
-export default student;
+export default Student;

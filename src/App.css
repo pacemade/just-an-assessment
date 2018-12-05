@@ -15,4 +15,5 @@ body {
   border-radius: 10px;
   overflow: scroll;
   box-shadow: 5px 5px 5px rgb(139, 135, 139) ;
+  background-color: white;
 }

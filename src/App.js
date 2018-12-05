@@ -38,12 +38,6 @@ class App extends Component {
     console.log(this.state.search);
   }
 
-  displayMatchesHandler = (e) => {
-    const matchArray = this.findMatchesHandler(e.target.value, this.state.persons)
-    // console.log(matchArray);
-
-  }
-
   showMe = () => {
     console.log(this.state.persons);
   }

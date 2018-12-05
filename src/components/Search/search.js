@@ -1,5 +1,4 @@
 import React from 'react';
-import Student from '../Students/student'
 import './search.css'
 
 const search = (props) => {

@@ -22,10 +22,10 @@ class App extends Component {
       })
       .then(data => {
         let personsArray = data.students
+    {/* adding the tags key beforehand */}
         personsArray.map((person, index) => {
           personsArray[index] = {...personsArray[index],...{tags:[]}}
         })
-        console.log(personsArray);
         this.setState({persons: personsArray})
       })
   }
@@ -53,7 +53,8 @@ class App extends Component {
 
     const tagName = event.target.firstChild.value
     let tempPersonsArray = this.state.persons
-    // tempPersonsArray[personId] = {...tempPersonsArray[personId],...{tag: tagName}}
+    tempPersonsArray[personId].tags.push(tagName)
+    console.log(tempPersonsArray[personId].tags);
 
     console.log(this.state.persons);
     this.setState({persons: tempPersonsArray})
@@ -78,6 +79,7 @@ class App extends Component {
             company={person.company}
             skill={person.skill}
             grades={person.grades}
+            tags={person.tags}
             tagUpdate={this.addTagHandler}
           />
         })}

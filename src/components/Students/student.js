@@ -44,8 +44,12 @@ class Student extends Component {
               {this.props.grades.map((grade, index) => {
                 return <li key={index}>Test {index+1}: {grade}%</li>
               })}
+            </ul>  
+            <ul className="tags">
+              {this.props.tags.map((tag, index) => {
+                return <li key={index}>{tag}</li>
+              })}
             </ul>
-          {/* tried to start tags */}
             <form onSubmit={this.props.tagUpdate}>
               <input name={this.props.id} type="text" />
             </form>

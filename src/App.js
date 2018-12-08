@@ -21,7 +21,12 @@ class App extends Component {
         return response.json();
       })
       .then(data => {
-        this.setState({persons: data.students})
+        let personsArray = data.students
+        personsArray.map((person, index) => {
+          personsArray[index] = {...personsArray[index],...{tags:[]}}
+        })
+        console.log(personsArray);
+        this.setState({persons: personsArray})
       })
   }
 
@@ -42,16 +47,16 @@ class App extends Component {
     {/* tried to start tags, got stuck trying to pull state of the individual that needed the update */}
     event.preventDefault();
 
-    const tagName = event.target.firstChild.value
 
     {/* this grabs the id from the name value on input */}
     const personId = event.target.firstChild.name - 1
-    console.log(personId);
-    let tempPersonsArray = {...this.state.persons}
-    tempPersonsArray[personId] = {...tempPersonsArray[personId],...{tag: tagName}}
 
-    console.log(tempPersonsArray);
+    const tagName = event.target.firstChild.value
+    let tempPersonsArray = this.state.persons
+    // tempPersonsArray[personId] = {...tempPersonsArray[personId],...{tag: tagName}}
 
+    console.log(this.state.persons);
+    this.setState({persons: tempPersonsArray})
     event.target.firstChild.value = '';
   }
 

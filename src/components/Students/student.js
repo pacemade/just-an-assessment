@@ -18,10 +18,8 @@ class Student extends Component {
 
   toggleCollapsible = () => {
     if(this.state.toggle === "hidden") {
-        console.log("its hidden")
         this.setState({toggle: 'shown'})
     } else {
-        console.log("its shown")
         this.setState({toggle: 'hidden'})
     }
   }
@@ -40,17 +38,20 @@ class Student extends Component {
             <li>Skill: {this.props.skill}</li>
             <li>Grade Average: {this.average(this.props.grades)}%</li>
           </ul>
+          {/* changes css class of the field based on state of the CURRENT student */}
           <div className={this.state.toggle === 'hidden' ? 'content': ''} >
             <ul>
               {this.props.grades.map((grade, index) => {
                 return <li key={index}>Test {index+1}: {grade}%</li>
               })}
             </ul>
+          {/* tried to start tags */}
             <form onSubmit={this.props.tagUpdate}>
               <input type="text" />
             </form>
           </div>
         </div>
+        {/* changes the button from + to - based on state */}
         <button className='collapsible' onClick={this.toggleCollapsible}>{this.state.toggle === 'hidden' ? '+': '-'}</button>
       </div>
     )

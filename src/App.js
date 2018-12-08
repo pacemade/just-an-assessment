@@ -21,27 +21,34 @@ class App extends Component {
         return response.json();
       })
       .then(data => {
-        // console.log(data.students);
-        // this.updateStudentStateHandler(data.students);
         this.setState({persons: data.students})
       })
   }
 
   findMatchesHandler = (wordToMatch, persons) => {
     return persons.filter(person => {
+    {/* used regex to match, rather than JS */}
       const regex = new RegExp(wordToMatch, 'gi');
       return person.firstName.match(regex) || person.lastName.match(regex)
     });
   }
 
   searchHandler = (event) => {
+    {/* search is saved in a state, and updated with each change */}
     this.setState({ search: event.target.value })
-    console.log(this.state.search);
   }
 
-  addTagHandler = (e, tag) => {
+  addTagHandler = (e, index) => {
+    {/* tried to start tags, got stuck trying to pull state of the individual that needed the update */}
     e.preventDefault();
     console.log(e.target.firstChild.value);
+    const tagName = e.target.firstChild.value
+    let tempPersonsArray = {...this.state.persons}
+
+    let tempPerson = {...tempPersonsArray[0],...{tag: tagName}}
+
+    console.log(tempPerson);
+
     e.target.firstChild.value = '';
   }
 
@@ -51,9 +58,11 @@ class App extends Component {
         <Search
           changed={this.searchHandler}/>
         <Tag />
+        {/* state persons is filtered and mapped into student component */}
         {this.findMatchesHandler(this.state.search, this.state.persons).map((person) => {
           return <Student
-            key={person.id}
+            key={person.id - 1}
+            id={person.id}
             pic={person.pic}
             firstName={person.firstName}
             lastName={person.lastName}

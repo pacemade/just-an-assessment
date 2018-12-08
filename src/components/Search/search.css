@@ -4,9 +4,13 @@
   font-size: 1.2em;
 }
 
+/* change color of input text */
+
 input[type="text"], textarea {
   color: rgb(65, 65, 65);
 }
+
+/* Remove ugly blue border stuff input fields */
 
 input:focus,
 select:focus,

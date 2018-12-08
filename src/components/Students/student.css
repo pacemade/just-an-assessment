@@ -12,10 +12,6 @@
   padding: 0 0 0 10px;
 }
 
-.student-portrait-container {
-  position: relative;
-}
-
 .student-portrait {
   display: block;
   margin: 0px auto;
@@ -34,7 +30,7 @@
   color: grey;
 }
 
-/* collaspsible button */
+/* collapsible button */
 
 .collapsible {
   align-self: flex-start;

@@ -37,8 +37,8 @@
   background-color: rgb(207, 207, 207);
   border-radius: 5px;
   color: white;
-  padding: 5px;
-  margin: 5px;
+  padding: 5px 5px 5px 5px;
+  margin: 5px 8px 5px 0;
 }
 
 /* collapsible button */

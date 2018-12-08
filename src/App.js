@@ -8,7 +8,8 @@ class App extends Component {
 
   state = {
     persons: [],
-    search: ''
+    search: '',
+    tagSearch: ''
   }
 
   componentDidMount() {
@@ -38,25 +39,33 @@ class App extends Component {
     });
   }
 
+  findTagMatchesHandler = (wordToMatch, persons) => {
+    return persons.filter(person => {
+    {/* used regex to match, rather than JS */}
+      const regex = new RegExp(wordToMatch, 'gi');
+      return person.tags.find(tag => tag.includes(wordToMatch))
+    });
+  }
+
   searchHandler = (event) => {
     {/* search is saved in a state, and updated with each change */}
     this.setState({ search: event.target.value })
   }
 
+  tagSearchHandler = (event) => {
+    this.setState({ tagSearch: event.target.value })
+    console.log(this.state.tagSearch);
+  }
+
   addTagHandler = (event) => {
     {/* tried to start tags, got stuck trying to pull state of the individual that needed the update */}
     event.preventDefault();
-
-
     {/* this grabs the id from the name value on input */}
     const personId = event.target.firstChild.name - 1
-
     const tagName = event.target.firstChild.value
     let tempPersonsArray = this.state.persons
     tempPersonsArray[personId].tags.push(tagName)
-    console.log(tempPersonsArray[personId].tags);
 
-    console.log(this.state.persons);
     this.setState({persons: tempPersonsArray})
     event.target.firstChild.value = '';
   }
@@ -66,7 +75,7 @@ class App extends Component {
       <div className="student-container">
         <Search
           changed={this.searchHandler}/>
-        <Tag />
+        <Tag changed={this.tagSearchHandler} />
         {/* state persons is filtered and mapped into student component */}
         {this.findMatchesHandler(this.state.search, this.state.persons).map((person) => {
           return <Student

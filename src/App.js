@@ -31,11 +31,15 @@ class App extends Component {
       })
   }
 
-  findMatchesHandler = (wordToMatch, persons) => {
+  findMatchesHandler = (wordToMatch, tagToMatch, persons) => {
     return persons.filter(person => {
     {/* used regex to match, rather than JS */}
       const regex = new RegExp(wordToMatch, 'gi');
-      return person.firstName.match(regex) || person.lastName.match(regex)
+      if (this.state.tagSearch === '') {
+        return person.firstName.match(regex) || person.lastName.match(regex)
+      } else {
+        return person.tags.find(tag => tag.includes(tagToMatch))
+      }
     });
   }
 
@@ -77,7 +81,8 @@ class App extends Component {
           changed={this.searchHandler}/>
         <Tag changed={this.tagSearchHandler} />
         {/* state persons is filtered and mapped into student component */}
-        {this.findMatchesHandler(this.state.search, this.state.persons).map((person) => {
+        {this.findMatchesHandler(this.state.search, this.state.tagSearch, this.state.persons)
+          .map((person) => {
           return <Student
             key={person.id - 1}
             id={person.id}

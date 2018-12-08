@@ -46,7 +46,7 @@ class Student extends Component {
               })}
             </ul>
           {/* tried to start tags */}
-            <form onSubmit={this.props.tagUpdate}>
+            <form onSubmit={() => this.props.tagUpdate(this.props.firstName)}>
               <input type="text" />
             </form>
           </div>

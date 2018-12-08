@@ -38,20 +38,21 @@ class App extends Component {
     this.setState({ search: event.target.value })
   }
 
-  addTagHandler = (eyed) => {
+  addTagHandler = (event) => {
     {/* tried to start tags, got stuck trying to pull state of the individual that needed the update */}
-    console.log(eyed);
-    // event.preventDefault();
-    // console.log(event.target.firstChild.value);
-    // const tagName = event.target.firstChild.value
-    // let tempPersonsArray = {...this.state.persons}
-    //
-    // let tempPerson = {...tempPersonsArray[0],...{tag: tagName}}
-    //
-    // console.log(tempPerson);
-    // console.log(tempPersonsArray);
-    //
-    // event.target.firstChild.value = '';
+    event.preventDefault();
+
+    const tagName = event.target.firstChild.value
+
+    {/* this grabs the id from the name value on input */}
+    const personId = event.target.firstChild.name - 1
+    console.log(personId);
+    let tempPersonsArray = {...this.state.persons}
+    tempPersonsArray[personId] = {...tempPersonsArray[personId],...{tag: tagName}}
+
+    console.log(tempPersonsArray);
+
+    event.target.firstChild.value = '';
   }
 
   render() {
